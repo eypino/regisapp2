@@ -1,0 +1,91 @@
+<ion-content>
+  <ion-menu contentId="main-content" class="custom-menu" color="warning">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title style="background-color: #f1b215; font-size: x-large">Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <a style="font-size: larger;" (click)="['/ingresar-asistencia']">
+        <ion-icon name="duplicate-outline" style="vertical-align: middle;"></ion-icon>
+        Ingresar Asistencia
+      </a>
+    </ion-content>
+
+    <ion-content class="ion-padding">
+      <a style="font-size: larger;" (click)="['/modificar-asistencia']">
+        <ion-icon name="create-outline" style="vertical-align: middle;"></ion-icon>
+        Modificar Asistencia
+      </a>
+    </ion-content>
+
+    <ion-content class="ion-padding">
+      <a style="font-size: larger;" (click)="cerrarSesion()">
+        <ion-icon name="log-out-outline" style="width: 30%; vertical-align: middle;"></ion-icon>
+        Salir
+      </a>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar color="warning" style="--ion-toolbar-height: 80px !important; padding-top: 5%; padding-bottom: 5%;">
+        <ion-buttons slot="start" class="custom-toolbar">
+          <ion-menu-button class="custom-toolbar"></ion-menu-button>
+        </ion-buttons>
+        <ion-title style="font-size: xx-large">RegistrAPP</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label position="stacked" color="primary" style="font-size: large">Asignatura</ion-label>
+          <ion-select color="alert" [(ngModel)]="selectedAsignatura">
+            <ion-select-option
+              *ngFor="let asignatura of asignaturaList"
+              [value]="asignatura.codigo"
+              style="font-size: large"
+            >
+              {{ asignatura.nombre }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label position="stacked" color="primary" style="font-size: large">Sección</ion-label>
+          <ion-select color="alert" [(ngModel)]="selectedSeccion">
+            <ion-select-option
+              *ngFor="let seccion of seccionList"
+              [value]="seccion.seccion"
+              style="font-size: large">
+              {{ seccion.seccion }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label position="stacked" color="primary" style="font-size: large">Sala</ion-label>
+          <ion-select color="alert">
+            <ion-select-option value="sala1" color="primary" style="font-size: large">Sala 1</ion-select-option>
+            <ion-select-option value="sala2" color="primary" style="font-size: large">Sala 2</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button color="primary" expand="full" (click)="mostrarAlerta()">
+      <strong style="font-size: larger">Proyectar QR</strong>
+    </ion-button>
+    <p> Te equivocaste al proyectar? Elimina la asistencia <a (click)="borrarAsistencias()">Aquí</a></p>
+  </div>
+</ion-content>

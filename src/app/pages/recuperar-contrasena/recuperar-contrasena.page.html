@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="logo-container" style="background: #042E54 !important; display: flex; justify-content: center; align-items: center;">
+      <img src="/assets/img/logo duoc2.png" alt="Logo DUOC">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked" style="font-size: large;">Correo Electrónico</ion-label>
+    <br><br>
+    <ion-input [(ngModel)]="email" placeholder="Ejemplo@duocuc.cl" type="email" required></ion-input>
+  </ion-item>
+  <br><br>
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <ion-button color="warning" (click)="enviarCorreo()" [disabled]="!validarCorreo()"><strong style="font-size: larger;">Enviar Correo</strong></ion-button>
+  </div>
+</ion-content>

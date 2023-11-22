@@ -1,0 +1,26 @@
+<ion-header [translucent]="true" style="border-bottom: none !important; background: #042E54;">
+  <ion-toolbar>
+    <div class="logo-container">
+      <img src="/assets/img/logo duoc2.png" alt="Logo DUOC">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating" color="primary">Usuario</ion-label>
+    <ion-input [(ngModel)]="user.username" type="text" name="username" minLength="5" maxLength="15"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" color="primary">Contraseña</ion-label>
+    <ion-input [(ngModel)]="user.password" type="password" name="password" maxLength="15"></ion-input>
+  </ion-item>
+
+  <ion-button color="warning" expand="full" (click)="login()" class="custom-button-color custom-rounded-button">
+    <ion-icon name="" size=""  color="primary"></ion-icon>
+    <strong>INICIAR SESIÓN</strong>
+  </ion-button>
+
+  <a style="color:white;" (click)="recuperarContrasena()">Olvidé mi contraseña</a>
+</ion-content>

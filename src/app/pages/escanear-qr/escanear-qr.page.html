@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-menu contentId="main-content" class="custom-menu" color="warning">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title color="#042E54;" style="background-color:#F1B215; font-size: x-large;">Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding"><a style="font-size: larger;"(click)="['/escanear-qr']"><ion-icon style="width: 30%; padding-right: 5%; vertical-align: middle;"name='qr-code-sharp'></ion-icon>Escanear QR</a></ion-content>
+    <ion-content class="ion-padding"><a style="font-size: larger;"(click)="['/asig']"><ion-icon name="duplicate-outline" style="vertical-align: middle;"></ion-icon>Ver asistencias</a></ion-content>
+    <ion-content class="ion-padding"><a style="font-size: larger;" (click)="cerrarSesion()"><ion-icon name="log-out-outline" style="width: 30%; vertical-align: middle;"></ion-icon>Salir</a> </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar color="warning" style="--ion-toolbar-height: 80px !important; padding-top: 5%; padding-bottom: 5%;"> <!-- Ajusta la altura aquí -->
+        <ion-buttons slot="start" class="custom-toolbar">
+          <ion-menu-button class="custom-toolbar"></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="custom-toolbar" style="font-size: x-large;">RegistrAPP</ion-title>
+      </ion-toolbar>
+    </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-title>Escanear QR</ion-card-title>
+    <ion-img src="./assets/img/codigo-qr-1024x1024-1.png" style="width: 80%; margin: 10%;" alt="codigoQR"></ion-img>
+  </ion-card>
+  <ion-button color="primary" expand="full" (click)="escanearQR()" class="custom-button-color custom-rounded-button"><strong style="font-size:x-large;">Escanear QR</strong></ion-button>
+</ion-content>

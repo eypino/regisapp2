@@ -1,0 +1,139 @@
+<ion-content>
+  <ion-menu contentId="main-content" class="custom-menu" color="warning">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title
+          color="#042E54;"
+          style="background-color: #f1b215; font-size: x-large"
+          >Menú</ion-title
+        >
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <a style="font-size: larger" (click)="['/ingresar-asistencia']">
+        <ion-icon
+          name="duplicate-outline"
+          style="vertical-align: middle"
+        ></ion-icon>
+        Ingresar Asistencia
+      </a>
+    </ion-content>
+    <ion-content class="ion-padding">
+      <a style="font-size: larger" (click)="['/modificar-asistencia']">
+        <ion-icon
+          name="create-outline"
+          style="vertical-align: middle"
+        ></ion-icon>
+        Modificar Asistencia
+      </a>
+    </ion-content>
+    <ion-content class="ion-padding">
+      <a style="font-size: larger" (click)="cerrarSesion()">
+        <ion-icon
+          name="log-out-outline"
+          style="width: 30%; vertical-align: middle"
+        ></ion-icon>
+        Salir
+      </a>
+    </ion-content>
+  </ion-menu>
+
+  <div id="main-content">
+    <ion-header>
+      <ion-toolbar
+        color="warning"
+        style="
+          --ion-toolbar-height: 80px !important;
+          padding-top: 5%;
+          padding-bottom: 5%;
+        "
+      >
+        <ion-buttons slot="start" class="custom-toolbar">
+          <ion-menu-button class="custom-toolbar"></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="custom-toolbar" style="font-size: xx-large"
+          >RegistrAPP</ion-title
+        >
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-card>
+      <ion-card-title color="primary">Modificar Asistencia</ion-card-title>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label position="stacked" color="primary" style="font-size: large"
+            >Asignatura</ion-label
+          >
+          <ion-select color="alert" [(ngModel)]="selectedAsignatura">
+            <ion-select-option
+              *ngFor="let asignatura of asignaturaList"
+              [value]="asignatura.codigo"
+              style="font-size: large"
+              >{{ asignatura.nombre }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label position="stacked" color="primary" style="font-size: large"
+            >Sección</ion-label
+          >
+          <ion-select color="alert" [(ngModel)]="selectedSeccion">
+            <ion-select-option
+              *ngFor="let seccion of seccionList"
+              [value]="seccion.seccion"
+              style="font-size: large"
+              >{{ seccion.seccion }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button
+      expand="full"
+      color="primary"
+      (click)="filtrarAsistencia(selectedAsignatura, selectedSeccion)"
+      >Ver Registros</ion-button
+    >
+
+    <ion-card-title color="primary">Asistencias</ion-card-title>
+    <ion-list *ngIf="mostrarResultados">
+      <ion-card *ngFor="let registro of registros">
+        <ion-card-content>
+          <ion-label>
+            Alumno: {{ registro.nombre }}
+            <br />
+            Fecha: {{ registro.fecha }}
+            <br />
+            Hora de Entrada: {{ registro.hora_entrada }}
+            <br />
+            Estado: {{ registro.estado }}
+            <br />
+          </ion-label>
+
+          <ion-item>
+            <ion-label>Seleccionar Estado</ion-label>
+            <ion-select
+              [(ngModel)]="registro.estado"
+              (ionChange)="cambiarEstado(registro)"
+            >
+              <ion-select-option value="ausente">Ausente</ion-select-option>
+              <ion-select-option value="presente">Presente</ion-select-option>
+              <ion-select-option value="justificado"
+                >Justificado</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="logo-container"
+      style="background: #042E54 !important; display: flex; justify-content: center; align-items: center;">
+      <img src="/assets/img/logo duoc2.png" alt="Logo DUOC">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label style="color: #042E54;" position="floating">Contraseña Actual</ion-label>
+    <ion-input [(ngModel)]="contrasenaActual" type="password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label style="color: #042E54;" position="floating">Nueva Contraseña</ion-label>
+    <ion-input [(ngModel)]="nuevaContrasena" type="password"></ion-input>
+  </ion-item>
+
+
+  <div style="display: flex; justify-content: center; align-items: center; margin-top: 10%;">
+    <ion-button color="warning" style="color: #042E54;" (click)="cambiarContrasena()"><strong
+        style="font-size: larger;">Cambiar Contraseña</strong></ion-button>
+  </div>
+</ion-content>
